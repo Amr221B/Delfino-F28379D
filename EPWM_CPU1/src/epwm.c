@@ -31,11 +31,13 @@ void EPWM1A_setPeriodAndDuty(unsigned short pwmPeriod, unsigned short pwmDuty){
     // bit 2         0:      PHSEN, 0 = phase control disabled
     // bit 1-0       11:     CTRMODE, 11 = timer stopped (disabled)
     EPwm1Regs.TBCTL.all = 0xC033;
+    EPwm1Regs.TBCTL.bit.HSPCLKDIV = HIGH_SPEED_TB_CLK_PRESCALAR;
+    EPwm1Regs.TBCTL.bit.CLKDIV = CLK_DIV;
     EPwm1Regs.TBCTR = 0x0000;               // Clear timer counter
     EPwm1Regs.TBPHS.bit.TBPHS = 0x0000;     // Set timer phase
     EPwm1Regs.TBPRD = pwmPeriod;      // Set timer period
+    EPwm1Regs.CMPCTL.all = 0x0002;          // LOADAMODE, 10 = load on zero or PRD match from shadow CMP A register
     EPwm1Regs.CMPA.bit.CMPA = pwmDuty*pwmPeriod;   // Set PWM duty cycle
-    EPwm1Regs.CMPCTL.all = 0x0002;          // LOADAMODE, 10 = load on zero or PRD match from shadow registers
     // Action-qualifier control register A
     // bit 11-10     00:     CBD, 00 = do nothing
     // bit 9-8       00:     CBU, 00 = do nothing
@@ -49,7 +51,7 @@ void EPWM1A_setPeriodAndDuty(unsigned short pwmPeriod, unsigned short pwmDuty){
     EPwm1Regs.DBCTL.bit.OUT_MODE = 0;   // Deadband disabled
     EPwm1Regs.PCCTL.bit.CHPEN = 0;      // PWM chopper unit disabled
     EPwm1Regs.TZDCSEL.all = 0x0000;     // All trip zone and DC compare actions disabled
-    EPwm1Regs.TBCTL.bit.CTRMODE=0;                        // Count up mode
+    EPwm1Regs.TBCTL.bit.CTRMODE=0;      // Count up mode
     // Select CPU1 system clk as input clk to EPWM1 module
     DevCfgRegs.CPUSEL0.bit.EPWM1=1;
     // Enable clk to EPWM1 Module
