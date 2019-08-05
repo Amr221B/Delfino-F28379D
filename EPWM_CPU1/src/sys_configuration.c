@@ -12,17 +12,16 @@ void clkInitialize(void){
     ClkCfgRegs.CLKSRCCTL1.bit.OSCCLKSRCSEL = 0;     // Set clock source to INTOSC2 (default)
     ClkCfgRegs.CLKSRCCTL1.bit.XTALOFF=1;            // Turn off XTALOSC
     // PLL configurations
-    ClkCfgRegs.SYSPLLMULT.all=0x0A;            // Set system clk to 100 Mhz
+    ClkCfgRegs.SYSPLLMULT.all=0x0A;            // Set system clock to 100 MHz
     ClkCfgRegs.SYSCLKDIVSEL.bit.PLLSYSCLKDIV = 0;   // PLLSYSCLK divider from OSCCLK or PLLCLK.
     ClkCfgRegs.SYSPLLCTL1.bit.PLLEN=1;              // Enable PLL
     // Wait for PLL to lock.
     // During this time the CPU is still running from INTOSC2/PLLSYSCLKDIV.
     // Once the PLL is stable we must manually switch over to use the PLL output.
-    // Code is not required to sit and wait for the PLL to lock.
     while(ClkCfgRegs.SYSPLLSTS.bit.LOCKS != 1){      // Wait for LOCKS bit to set
 
     }
-    ClkCfgRegs.SYSPLLCTL1.bit.PLLCLKEN=1;           // Choose PLLSYSCLK as system clk
+    ClkCfgRegs.SYSPLLCTL1.bit.PLLCLKEN=1;           // Choose PLLSYSCLK as system clock
     //--- Finish up
     asm(" EDIS");                       // Disable EALLOW protected register access
 }
