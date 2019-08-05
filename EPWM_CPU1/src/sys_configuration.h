@@ -10,6 +10,7 @@
 
 #include "F2837xD_device.h"
 
+// Initialize System Clock to 100 MHz
 void clkInitialize(void);
 
 #endif /* SOURCE_CLK_H_ */
