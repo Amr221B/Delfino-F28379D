@@ -6,7 +6,7 @@
  */
 #include "epwm.h"
 
-void EPWM1A_setPeriodAndDuty(unsigned short pwmPeriod, unsigned short pwmDuty){
+void EPWM1A_setPeriodAndDuty(uint16_t pwmPeriod, uint16_t pwmDuty){
     asm(" EALLOW");                             // Enable EALLOW protected register access
     // First configure GPIO 0 pin for EPWM1A output
     // Unlock the GPxLOCK register bits
