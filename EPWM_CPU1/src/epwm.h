@@ -27,13 +27,10 @@
 // High Speed TBClock Prescaler to the ePWM Time Base counter CLK 3-Bit Divider.
 #define HIGH_SPEED_TB_CLK_PRESCALAR 1
 
-// System CLK 100 Mhz
-#define SYSCLK 100000000
-
 /*--------------------------------------------------------------------------------------------------------------------------------
 [Function Name]: EPWM1A_setPeriodAndDuty.
 [Description]: This function is responsible for enabling ePWM1 module and configure PWM period and duty cycle
-                   to generate a PWM signal from ePWM1A module on GPIO 0 pin.
+                   to generate a PWM signal from ePWM1A on GPIO 0 pin.
 [Args]:
 [In]        pwmPeriod:
                 Timer Base period value that represents PWM frequency.
@@ -42,6 +39,6 @@
                 duty cycle ratio from 0(0%) to 1(100%).
 [Returns]   No return.
 --------------------------------------------------------------------------------------------------------------------------------*/
-void EPWM1A_setPeriodAndDuty(unsigned short pwmPeriod, unsigned short pwmDuty);
+void EPWM1A_setPeriodAndDuty(uint16_t pwmPeriod, uint16_t pwmDuty);
 
 #endif /* EPWM_EPWM_H_ */
