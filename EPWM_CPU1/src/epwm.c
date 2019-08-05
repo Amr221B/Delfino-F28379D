@@ -41,11 +41,11 @@ void EPWM1A_setPeriodAndDuty(uint16_t pwmPeriod, uint16_t pwmDuty){
     // Action-qualifier control register A
     // bit 11-10     00:     CBD, 00 = do nothing
     // bit 9-8       00:     CBU, 00 = do nothing
-    // bit 7-6       01:     CAD, 00 = do nothing
-    // bit 5-4       10:     CAU, 01 = clear
-    // bit 3-2       00:     PRD, 10 = set
-    // bit 1-0       00:     ZRO, 10 = set
-    EPwm1Regs.AQCTLA.all = 0x0060;
+    // bit 7-6       00:     CAD, 00 = do nothing
+    // bit 5-4       01:     CAU, 01 = clear
+    // bit 3-2       10:     PRD, 10 = set
+    // bit 1-0       10:     ZRO, 10 = set
+    EPwm1Regs.AQCTLA.all = 0x001A;
     EPwm1Regs.AQSFRC.all = 0x0000;      // Action-qualifier s/w force register Disabled
     EPwm1Regs.AQCSFRC.all = 0x0000;     // Action-qualifier continuous s/w force register Disabled
     EPwm1Regs.DBCTL.bit.OUT_MODE = 0;   // Deadband disabled
