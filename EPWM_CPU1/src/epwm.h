@@ -22,10 +22,10 @@
 #define EPWM_PRESCALER 1
 
 // EPWM Timer Base counter CLK Divider 3-Bit Divider.
-#define CLK_DIV 1
+#define CLK_DIV 0
 
 // High Speed TBClock Prescaler to the ePWM Time Base counter CLK 3-Bit Divider.
-#define HIGH_SPEED_TB_CLK_PRESCALAR 1
+#define HIGH_SPEED_TB_CLK_PRESCALAR 0
 
 /*--------------------------------------------------------------------------------------------------------------------------------
 [Function Name]: EPWM1A_setPeriodAndDuty.
